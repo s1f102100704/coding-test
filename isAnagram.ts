@@ -4,11 +4,7 @@ const isAnagram = (s: string, t: string) => {
 
   const setStr = (word: string, map: Map<string, number>) => {
     for (const str of word) {
-      if (map.has(str)) {
-        map.set(str, map.get(str)! + 1);
-      } else {
-        map.set(str, 1);
-      }
+      map.set(str, (map.get(str) ?? 0) + 1);
     }
   };
 
