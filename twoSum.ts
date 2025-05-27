@@ -1,12 +1,12 @@
 const twoSum = (nums: number[], target: number) => {
   const map = new Map<number, number>();
   let result: number[] = [];
-  for (const num of nums) {
-    const diff = target - num;
+  for (let i = 0; i < nums.length; i++) {
+    const diff = target - nums[i];
     if (map.has(diff)) {
-      result = [num, diff];
+      result = [map.get(diff) ?? 0, i];
     } else {
-      map.set(num, num);
+      map.set(nums[i], i);
     }
   }
   return result;
