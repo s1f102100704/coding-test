@@ -6,13 +6,11 @@ const validParentheses = (str: string) => {
     ["]", "["],
   ]);
   for (const s of str) {
-    if (s == "(" || s == "{" || s == "[") {
-      stack.push(s);
-    } else {
+    if (map.has(s)) {
       const top = stack.pop();
-      if (top !== map.get(s)) {
-        return false;
-      }
+      if (map.get(s)! !== top) return false;
+    } else {
+      stack.push(s);
     }
   }
   if (stack.length == 0) {
